@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(charging_robot_state_publishergit )
+project(charging_robot_state_publisher)
 
 # Default to C++17
 if(NOT CMAKE_CXX_STANDARD)
