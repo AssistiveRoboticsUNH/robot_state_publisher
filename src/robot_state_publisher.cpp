@@ -130,7 +130,7 @@ RobotStatePublisher::RobotStatePublisher(const rclcpp::NodeOptions & options)
   static_tf_broadcaster_ = std::make_unique<tf2_ros::StaticTransformBroadcaster>(this);
 
   description_pub_ = this->create_publisher<std_msgs::msg::String>(
-    "robot_description",
+    "robot_description_charging",
     // Transient local is similar to latching in ROS 1.
     rclcpp::QoS(1).transient_local());
 
@@ -142,7 +142,7 @@ RobotStatePublisher::RobotStatePublisher(const rclcpp::NodeOptions & options)
 
   // subscribe to joint state
   joint_state_sub_ = this->create_subscription<sensor_msgs::msg::JointState>(
-    "joint_states",
+    "/joint_states",
     rclcpp::SensorDataQoS(),
     std::bind(&RobotStatePublisher::callbackJointState, this, std::placeholders::_1),
     subscriber_options);
